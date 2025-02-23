@@ -10,14 +10,14 @@ for index in range(0, len(dates)):
     item = dates[index]
     dates[index] = item[0:item.find(" ")]
 
+#only using 2023 data, putting it into a list
 yearonedates = []
 for item in dates:
     if item.startswith('2023'):
         yearonedates.append(item)
 
 
-
-
+#getting the numbers for the third of months
 first_third = 0
 second_third = 0
 last_third = 0
@@ -43,7 +43,7 @@ ax.set(ylabel='Count', title='Tickets Per Third Of Month', ylim = (0, 25000))
 ax.bar_label(bar_cotainer, fmt='{:,.0f}')
 
 
-
+#firguing out the halves of months
 first_half_of_month = 0
 second_half_of_month = 0
 
@@ -54,9 +54,7 @@ for item in yearonedates:
         second_half_of_month += 1
 
 
-
-
-# i used the matplotlib documentation for pie charts to base this code:
+# I used the matplotlib documentation for pie charts to base this code:
 # https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html
 
 halves = 'First Half', 'Second Half'
@@ -66,17 +64,14 @@ fig, ax = plt.subplots()
 ax.pie(countofhalves, labels=halves, autopct='%1.1f%%', colors=['blue', 'red'])
 ax.set(title = 'Tickets by Half of Month')
 
+
 #months
-
 months = {"January" : 0, "Febuary" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}
-
-
 
 for item in yearonedates:
     month_num = int(item.split("/")[1]) 
     month_name = list(months.keys())[month_num-1] 
     months[month_name] += 1 
-##print(months)
 
 plt.figure(figsize=(12,6))
 plt.bar((list(months.keys())), (list(months.values())), color="blue")
@@ -111,10 +106,8 @@ for item in yearonedates:
     halvesmonths[halfofmonth] += 1 
 
 
-#print(halvesmonths)
-
+#colors for the halves of month, blue is first, red is second
 blue_red_alternate = ["blue" if i % 2 == 0 else "red" for i in range(len((list(halvesmonths.keys()))))]
-
 
 plt.figure(figsize=(12,6))
 plt.bar((list(halvesmonths.keys())), (list(halvesmonths.values())), color=blue_red_alternate)
@@ -140,8 +133,6 @@ ax.set(xlabel = 'Day Number', ylabel = 'Number of Tickets', title = 'Tickets By 
 
 
 #dailyaverage
-
-
 day_average = {}
 
 for key,value in days.items():
@@ -169,7 +160,8 @@ plt.show()
 
 mostday = day_average[14]
 
-
-print("You are " + str(morelikely) + "% to get ticketed in the last third of the month compared to the first")
+print("The goal is to firgure out if there are ticket Quotas in Syracuse")
+print("Only used 2023 data of parking tickets")
+print("You are " + str(morelikely) + "% to get ticketed in the last third of the month compared to the first \n9 months have more tickets in second half than first!")
 print("There seems to be a general trend up as the month goes on, but this is only one year of data so the sample size isn't massive")
 print("Can't say for sure if there is a ticket quota for officers")
