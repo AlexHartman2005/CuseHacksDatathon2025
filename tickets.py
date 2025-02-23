@@ -165,7 +165,7 @@ y = day_average.values()
 plt.stem(x, y, bottom = dailyaverage)
 plt.xlabel('Day Number')
 plt.ylabel('Number of Tickets')
-plt.title('Average Tickets by Day Number')
+plt.title('Deviation from Average Tickets per Day')
 plt.show()
 
 
