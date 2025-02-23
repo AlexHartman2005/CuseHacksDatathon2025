@@ -119,8 +119,8 @@ blue_red_alternate = ["blue" if i % 2 == 0 else "red" for i in range(len((list(h
 
 plt.figure(figsize=(12,6))
 plt.bar((list(halvesmonths.keys())), (list(halvesmonths.values())), color=blue_red_alternate)
-plt.xticks(rotation=90, fontsize = 5)
-plt.title("Does New York Really Not Have Quotas?")
+plt.xticks(rotation=90, fontsize = 4)
+plt.title("Number of Tickets Per Half of Month")
 plt.xlabel("Half of Month")
 plt.ylabel("Number of tickets")
 
@@ -136,7 +136,7 @@ for item in yearonedates:
 
 fig, ax = plt.subplots()
 ax.plot((list(days.keys())), (list(days.values())))
-ax.set(xlabel = 'Day Number', ylabel = 'Number of Tickets', title = 'Tickets By Day Number')
+ax.set(xlabel = 'Day Number', ylabel = 'Number of Tickets', title = 'Tickets By Day Number (Total)')
 
 
 
