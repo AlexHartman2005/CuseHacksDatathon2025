@@ -1,7 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
 
 
 file1 = pd.read_csv('Parking_Violations_-_2023_-_Present.csv')
@@ -32,7 +30,11 @@ for item in yearonedates:
     else: 
         last_third += 1
 
-#thirds
+morelikely = round(((last_third-first_third) / first_third * 100), 2)
+
+print("You are " + str(morelikely) + "% to get ticketed in the last third of the month compared to the first")
+
+#graphing thirds
 thirds = ['First Third', 'Second Third', 'Last Third']
 countofthirds = [first_third, second_third, last_third]
 
@@ -54,6 +56,7 @@ for item in yearonedates:
 
 
 
+
 # i used the matplotlib documentation for pie charts to base this code:
 # https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html
 
@@ -71,11 +74,6 @@ months = {"January" : 0, "Febuary" : 0, "March" : 0, "April" : 0, "May" : 0, "Ju
 
 
 
-firstone = yearonedates[0].split("/")
-print(firstone)
-
-
-#months
 for item in yearonedates:
     month_num = int(item.split("/")[1]) 
     month_name = list(months.keys())[month_num-1] 
@@ -88,6 +86,7 @@ plt.xticks(rotation=90, fontsize = 5)
 plt.title("Number of Tickets per Month")
 plt.xlabel("Month")
 plt.ylabel("Number of tickets")
+
 
 #halves of months
 halvesmonths = {"First Half of January" : 0, "Second Half of January" : 0, 
@@ -157,6 +156,9 @@ for key,value in days.items():
 
 dailyaverage = len(yearonedates) // 365
 
+#again based on starter code from matplotlib documentation
+#https://matplotlib.org/stable/gallery/lines_bars_and_markers/stem_plot.html#sphx-glr-gallery-lines-bars-and-markers-stem-plot-py
+
 plt.figure()
 x = day_average.keys()
 y = day_average.values()
@@ -165,3 +167,6 @@ plt.xlabel('Day Number')
 plt.ylabel('Number of Tickets')
 plt.title('Average Tickets by Day Number')
 plt.show()
+
+
+
