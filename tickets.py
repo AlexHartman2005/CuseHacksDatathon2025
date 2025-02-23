@@ -32,7 +32,6 @@ for item in yearonedates:
 
 morelikely = round(((last_third-first_third) / first_third * 100), 2)
 
-print("You are " + str(morelikely) + "% to get ticketed in the last third of the month compared to the first")
 
 #graphing thirds
 thirds = ['First Third', 'Second Third', 'Last Third']
@@ -168,4 +167,8 @@ plt.title('Deviation from Average Tickets per Day')
 plt.show()
 
 
+mostday = day_average[14]
 
+
+print("You are " + str(morelikely) + "% to get ticketed in the last third of the month compared to the first")
+print("There seems to be a general trend up as the month goes on, but this is only one year of data so the sample size isn't massive")
