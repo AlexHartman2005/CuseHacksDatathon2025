@@ -65,8 +65,7 @@ countofhalves = [first_half_of_month, second_half_of_month]
 
 fig, ax = plt.subplots()
 ax.pie(countofhalves, labels=halves, autopct='%1.1f%%', colors=['blue', 'red'])
-
-
+ax.set(title = 'Tickets by Half of Month')
 
 #months
 
