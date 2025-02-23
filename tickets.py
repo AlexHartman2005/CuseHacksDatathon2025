@@ -139,4 +139,29 @@ for item in yearonedates:
 fig, ax = plt.subplots()
 ax.plot((list(days.keys())), (list(days.values())))
 ax.set(xlabel = 'Day Number', ylabel = 'Number of Tickets', title = 'Tickets By Day Number')
+
+
+
+#dailyaverage
+
+
+day_average = {}
+
+for key,value in days.items():
+    if key < 29:
+        day_average[key] = value // 12
+    elif key < 31:
+        day_average[key] = value // 11
+    else:
+        day_average[key] = value // 7
+
+dailyaverage = len(yearonedates) // 365
+
+plt.figure()
+x = day_average.keys()
+y = day_average.values()
+plt.stem(x, y, bottom = dailyaverage)
+plt.xlabel('Day Number')
+plt.ylabel('Number of Tickets')
+plt.title('Average Tickets by Day Number')
 plt.show()
